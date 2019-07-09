@@ -1,0 +1,5 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(376,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  main.cpp
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(62): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  OpenGL_Waves.vcxproj -> C:\Users\Carl J. Ntifo\Documents\Git\OpenGL_Waves\OpenGL_Waves\\bin\/Debug\OpenGL_Waves.exe
