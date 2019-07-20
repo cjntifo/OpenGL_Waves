@@ -155,6 +155,7 @@
     <ClInclude Include="src\GeometryGenerator.h" />
     <ClInclude Include="src\GL_Util.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\stb_image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

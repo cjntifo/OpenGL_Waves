@@ -18,8 +18,9 @@
 //GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-struct vertex
+/*struct vertex
 {
 	GLfloat x, y, z;
 	GLfloat a, b, c;
@@ -41,6 +42,6 @@ struct MeshData
 	std::vector<vertex> Vertices;
 	//std::vector<normal> Normals;
 	std::vector<index> Indices;
-};
+};*/
 
 #endif //GLUTIL_H
