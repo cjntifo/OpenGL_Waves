@@ -20,28 +20,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-/*struct vertex
-{
-	GLfloat x, y, z;
-	GLfloat a, b, c;
-	GLfloat u, v;
-};
+//GL Includes
+#include "Shader.h"
+#include "Camera.h"
 
-struct normal
-{
-	GLfloat x, y, z;
-};
-
-struct index
-{
-	GLuint a, b, c;
-};
-
-struct MeshData
-{
-	std::vector<vertex> Vertices;
-	//std::vector<normal> Normals;
-	std::vector<index> Indices;
-};*/
+#include "GeometryGenerator.h"
 
 #endif //GLUTIL_H
