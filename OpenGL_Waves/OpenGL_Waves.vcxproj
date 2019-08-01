@@ -154,8 +154,10 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\GeometryGenerator.h" />
     <ClInclude Include="src\GL_Util.h" />
+    <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\stb_image.h" />
+    <ClInclude Include="src\Terrain.h" />
     <ClInclude Include="src\Water.h" />
     <ClInclude Include="src\World.h" />
   </ItemGroup>

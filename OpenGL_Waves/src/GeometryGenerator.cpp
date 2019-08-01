@@ -27,7 +27,7 @@ void GeometryGenerator::CreateGrid(float width, float depth, int m, int n, MeshD
 			//code
 			GLfloat x = -halfWidth + j * dx;
 
-			meshData.Vertices[i*n + j].Position = glm::vec3(x, -1.0f, z);
+			meshData.Vertices[i*n + j].Position = glm::vec3(x, 0.0f, z);
 			meshData.Vertices[i*n + j].Normal = glm::vec3(0.0f, 1.0f, 0.0f);
 			meshData.Vertices[i*n + j].TexC = glm::vec2(j * du, i * dv);
 		}

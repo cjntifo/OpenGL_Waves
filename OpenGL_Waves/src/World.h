@@ -4,12 +4,15 @@
 #define WORLD_H
 
 #include "GL_Util.h"
+#include "Terrain.h"
 
 class World
 {
 public:
 	World()
-	{
+	{		
+		earth.init();
+		
 		//Setup shader program
 		Shader::ShaderCode code;
 		code.vertexCode = vertexShaderSource;
@@ -18,29 +21,6 @@ public:
 
 		//Create grid
 		GeometryGenerator geoGen;
-		geoGen.CreateGrid(50.0f, 50.0f, 100, 100, grid);
-		//geoGen.CreateCylinder(0.5f, 0.3f, 3.0f, 20, 20, cylinder);
-
-		// Setup water VAO
-		glGenVertexArrays(1, &gridVAO);
-		glGenBuffers(1, &gridVBO);
-		glGenBuffers(1, &gridEBO);
-		glBindVertexArray(gridVAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, gridVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(GeometryGenerator::Vertex) * grid.Vertices.size(), grid.Vertices.data(), GL_STATIC_DRAW);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gridEBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * grid.Indices.size(), grid.Indices.data(), GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-		glBindVertexArray(0);
-
 		//Create cylinder
 		geoGen.CreateCylinder(0.5f, 0.3f, 3.0f, 20, 20, cylinder);
 
@@ -87,7 +67,6 @@ public:
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
 		glBindVertexArray(0);
 
-
 		/*
 		
 		UINT totalVertexCount = 
@@ -129,18 +108,16 @@ public:
 
 	~World()
 	{
-		glDeleteVertexArrays(1, &gridVAO);
-		glDeleteBuffers(1, &gridVBO);
+		glDeleteVertexArrays(1, &sphereVAO);
+		glDeleteBuffers(1, &sphereVBO);
 	}
 
-	void update(Camera camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT)
+	void update(GLFWwindow* window, Camera camera, float deltaTime, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT)
 	{
+		earth.update(window, camera, deltaTime, SCR_WIDTH, SCR_HEIGHT);
+
 		// ativate shader program
 		shaderProgram.use();
-
-		// set grid color
-		glm::vec4 white = glm::vec4(1, 1, 1, 1);
-		shaderProgram.setVec4("ourColor", white);
 
 		// pass projection matrix to shader (note that in this case it could change every frame)
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -155,35 +132,49 @@ public:
 		shaderProgram.setMat4("model", model);
 
 		// Set Render Mode
-		GLenum GL_RENDER_MODE = GL_LINES; // GL_LINES or GL_TRIANGLES
+		GLenum GL_RENDER_MODE = GL_LINES; // GL_LINES or GL_TRIANGLES		
 
-		// bind and draw grid element buffer
-		glBindVertexArray(gridVAO);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glDrawElements(GL_RENDER_MODE, grid.Indices.size(), GL_UNSIGNED_INT, 0);
-
+		// set color for cylinders
 		glm::vec4 blue = glm::vec4(0.5, 0.5, 1, 1);
 		shaderProgram.setVec4("ourColor", blue);
 
 		// bind and draw cylinder element buffer
 		glBindVertexArray(cylinderVAO);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glDrawElements(GL_RENDER_MODE, cylinder.Indices.size(), GL_UNSIGNED_INT, 0);
+		
+		// offset each pillar by positions
+		for (unsigned int i = 0; i < 5; i++)
+		{
+			// calculate the model matrix for each object and pass it to shader before drawing
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, pillarPositions[i]);
+			shaderProgram.setMat4("model", model);
+
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			glDrawElements(GL_RENDER_MODE, cylinder.Indices.size(), GL_UNSIGNED_INT, 0);
+		}
 
 		glm::vec4 red = glm::vec4(1, 0.5, 0.5, 1);
 		shaderProgram.setVec4("ourColor", red);
 
 		// bind and draw sphere element buffer
 		glBindVertexArray(sphereVAO);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glDrawElements(GL_RENDER_MODE, cylinder.Indices.size(), GL_UNSIGNED_INT, 0);
-	}
-	
-private:
-	Shader shaderProgram;
 
-	GeometryGenerator::MeshData grid;
-	GLuint gridVAO, gridVBO, gridEBO;
+		for (unsigned int i = 0; i < 5; i++)
+		{
+			// calculate the model matrix for each object and pass it to shader before drawing
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(pillarPositions[i].x, 3.5f, pillarPositions[i].z));
+			shaderProgram.setMat4("model", model);
+
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			glDrawElements(GL_RENDER_MODE, cylinder.Indices.size(), GL_UNSIGNED_INT, 0);
+		}
+	}
+
+private:
+	Terrain earth;
+
+	Shader shaderProgram;
 
 	GeometryGenerator::MeshData cylinder;
 	GLuint cylinderVAO, cylinderVBO, cylinderEBO;
@@ -191,6 +182,57 @@ private:
 	GeometryGenerator::MeshData sphere;
 	GLuint sphereVAO, sphereVBO, sphereEBO;
 
+	// world space positions of our cubes
+	glm::vec3 pillarPositions[5] = {
+		glm::vec3(20.0f,  1.5f,  20.0f),
+		glm::vec3(-10.0f,  1.5f, -10.0f),
+		glm::vec3(-15.0f, 1.5f, 0.0f),
+		glm::vec3(10.0f, 1.5f, -10.0f),
+		glm::vec3(-10.0f, 1.5f, -15.0f)
+	};
+
+	void createObject(GLuint *VAO_p, GLuint *VBO_p, GLuint *EBO_p, GeometryGenerator::MeshData mesh)
+	{
+		GLuint VAO = *VAO_p;
+		GLuint VBO = *VBO_p;
+		GLuint EBO = *EBO_p;
+
+		glGenVertexArrays(1, &VAO);
+		glGenBuffers(1, &VBO);
+		glGenBuffers(1, &EBO);
+		glBindVertexArray(VAO);
+
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GeometryGenerator::Vertex) * mesh.Vertices.size(), mesh.Vertices.data(), GL_STATIC_DRAW);
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * mesh.Indices.size(), mesh.Indices.data(), GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+		glBindVertexArray(0);
+	}
+
+	const char *playerVertexShaderSource = "#version 330 core\n"
+		"layout (location = 0) in vec3 position;\n"
+		"uniform mat4 model; \n"
+		"uniform mat4 view; \n"
+		"uniform mat4 projection; \n"
+		"uniform float deltaTime; \n"
+		"uniform float velX; \n"
+		"uniform float velZ; \n"
+		"void main()\n"
+		"{\n"
+		"	//float dx = (velX * deltaTime); \n"
+		"	//float dz = (velZ * deltaTime); \n"
+		"	//gl_Position = projection * view * model * vec4((position.x + dx), position.y, (position.z + dz), 1.0f); \n"
+		"	gl_Position = projection * view * model * vec4(position, 1.0f); \n"
+		"}\0";
+	
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 position;\n"
 		"uniform mat4 model; \n"

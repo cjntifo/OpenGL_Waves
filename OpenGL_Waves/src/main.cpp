@@ -10,6 +10,7 @@
 //GL Inlcudes
 #include "Water.h"
 #include "World.h"
+#include "Player.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -21,7 +22,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 1.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -29,6 +30,8 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
+
+static Player player;
 
 int main(void)
 {
@@ -72,9 +75,9 @@ int main(void)
 	// configure global opengl state
 	glEnable(GL_DEPTH_TEST);
 
-	// Create water object
-	//Water water;
+	// Create world objects
 	World world;
+	player.init();
 
 	// Loop until the user closes the window
 	while (!glfwWindowShouldClose(window))
@@ -90,7 +93,8 @@ int main(void)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// update water every frame...
-		world.update(camera, SCR_WIDTH, SCR_HEIGHT);
+		world.update(window, camera, deltaTime, SCR_WIDTH, SCR_HEIGHT);
+		player.update(window, camera, deltaTime, SCR_WIDTH, SCR_HEIGHT);
 
 		// Swap front and back buffers
 		glfwSwapBuffers(window);
@@ -114,13 +118,34 @@ void processInput(GLFWwindow *window)
 		glfwSetWindowShouldClose(window, true);
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
 		camera.ProcessKeyboard(FORWARD, deltaTime);
+		//player.doMovement(player.FORWARD, deltaTime);
+	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
 		camera.ProcessKeyboard(BACKWARD, deltaTime);
+		//player.doMovement(player.BACKWARD, deltaTime);
+	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
 		camera.ProcessKeyboard(LEFT, deltaTime);
+		//player.doMovement(player.LEFT, deltaTime);
+	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
 		camera.ProcessKeyboard(RIGHT, deltaTime);
+		//player.doMovement(player.RIGHT, deltaTime);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		player.doMovement(player.FORWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		player.doMovement(player.BACKWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+		player.doMovement(player.LEFT, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
+		player.doMovement(player.RIGHT, deltaTime);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
