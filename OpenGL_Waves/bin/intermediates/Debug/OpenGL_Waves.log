@@ -3,20 +3,42 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCT
   main.cpp
 c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\geometrygenerator.h(81): warning C4305: 'initializing': truncation from 'double' to 'const float'
 c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(98): warning C4018: '<': signed/unsigned mismatch
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(121): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(132): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(133): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(154): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(155): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(87): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(167): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(107): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(117): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(118): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(127): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(128): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(183): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(185): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(186): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(205): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\terrain.h(206): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(108): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(118): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(119): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(128): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(129): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(149): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(150): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(157): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(158): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(165): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(166): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(174): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\light.h(175): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\lightinghandler.h(102): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\lightinghandler.h(115): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\lightinghandler.h(129): warning C4018: '<': signed/unsigned mismatch
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\lightinghandler.h(215): warning C4930: 'Light light(LightingHandler::PointLight)': prototyped function not called (was a variable definition intended?)
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(88): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(168): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(169): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(175): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(174): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(176): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(185): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(177): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\carl j. ntifo\documents\git\opengl_waves\opengl_waves\src\main.cpp(186): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   OpenGL_Waves.vcxproj -> C:\Users\Carl J. Ntifo\Documents\Git\OpenGL_Waves\OpenGL_Waves\\bin\/Debug\OpenGL_Waves.exe

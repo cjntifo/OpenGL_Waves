@@ -99,7 +99,8 @@ private:
 	
 	const char *waveVertexShaderSource = "#version 330 core\n"
 		"layout(location = 0) in vec3 position; \n"
-		"layout(location = 1) in vec2 aTexCoord; \n"
+		"layout(location = 1) in vec3 normal; \n"
+		"layout(location = 2) in vec2 aTexCoord; \n"
 		"out vec2 TexCoord; \n"
 		"const float pi = 3.14159265; \n"
 		"uniform mat4 model; \n"

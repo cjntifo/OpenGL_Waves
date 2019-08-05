@@ -11,6 +11,7 @@
 #include "Water.h"
 #include "World.h"
 #include "Player.h"
+#include "LightingHandler.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);

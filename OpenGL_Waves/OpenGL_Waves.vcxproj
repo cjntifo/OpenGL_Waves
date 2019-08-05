@@ -154,6 +154,8 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\GeometryGenerator.h" />
     <ClInclude Include="src\GL_Util.h" />
+    <ClInclude Include="src\Light.h" />
+    <ClInclude Include="src\LightingHandler.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\stb_image.h" />
